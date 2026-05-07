@@ -1,4 +1,13 @@
+# Local .terraform folder
 .terraform/
+
+# Terraform state files
 *.tfstate
 *.tfstate.backup
+
+# Terraform lock file
 .terraform.lock.hcl
+
+# Executable files
+terraform.exe
+*.exe
