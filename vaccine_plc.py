@@ -43,7 +43,7 @@ try:
         temp_top.set_value(new_top)
         temp_bottom.set_value(new_bottom)
 
-        # 🔥 إرسال إلى MQTT
+        #   MQTT
         client.publish("fridge/temp_top", new_top)
         client.publish("fridge/temp_bottom", new_bottom)
         client.publish("fridge/door", door)
