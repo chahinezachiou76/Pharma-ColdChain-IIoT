@@ -1,10 +1,14 @@
-# 🌡️ Pipeline de Données IoT pour la Chaîne du Froid (Vaccins)
+#  Pipeline de Données IoT pour la Chaîne du Froid (Vaccins)
 
 Ce projet propose une solution technologique innovante pour répondre aux défis critiques de la logistique pharmaceutique, en alliant l'automatisation industrielle (IIoT) et la puissance du Cloud AWS.
 
----
+<details>
+  <summary><b>Click to view detailed Architecture Diagram</b></summary>
+  <br>
+  <img src="Architecture.png" width="100%">
+</details>
 
-## ⚠️ Problématique : Le Risque Thermique
+## Problématique : Le Risque Thermique
 Dans l'industrie pharmaceutique, la **chaîne du froid** est vitale. Une simple variation de température non détectée peut rendre des lots entiers de vaccins inutilisables, entraînant :
 * **Pertes financières** massives.
 * **Risques sanitaires** majeurs pour les patients.
@@ -12,7 +16,7 @@ Dans l'industrie pharmaceutique, la **chaîne du froid** est vitale. Une simple 
 
 ---
 
-## ✅ La Solution : Surveillance Intelligente & Cloud
+##  La Solution : Surveillance Intelligente & Cloud
 Pour résoudre ce problème, j'ai conçu une architecture intégrée qui garantit une visibilité totale et une optimisation des coûts :
 
 1.  **Collecte en Temps Réel (IIoT) :** Utilisation des protocoles **OPC UA** et **OpenPLC** pour extraire les données de température directement des capteurs industriels.
@@ -21,7 +25,7 @@ Pour résoudre ce problème, j'ai conçu une architecture intégrée qui garanti
 
 ---
 
-## 🛠️ Technologies Utilisées
+##  Technologies Utilisées
 * **Cloud :** AWS (EC2, S3, Firehose, IAM).
 * **Infrastructure as Code :** Terraform.
 * **Programmation :** Python (Boto3) pour l'automatisation.
@@ -29,7 +33,7 @@ Pour résoudre ce problème, j'ai conçu une architecture intégrée qui garanti
 
 ---
 
-## 💰 Optimisation FinOps (Le Plus de ce Projet)
+## Optimisation FinOps (Le Plus de ce Projet)
 Le fichier `finops_optimizer.py` permet de :
 * Détecter automatiquement les instances EC2 arrêtées ou inutilisées depuis plus de 7 jours.
 * Réduire les coûts opérationnels en recommandant la suppression ou l'archivage des ressources inutiles.
