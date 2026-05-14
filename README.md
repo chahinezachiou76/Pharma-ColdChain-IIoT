@@ -34,7 +34,13 @@ Pour résoudre ce problème, j'ai conçu une architecture intégrée qui garanti
 ---
 
 ## Optimisation FinOps (Le Plus de ce Projet)
-Le fichier `finops_optimizer.py` permet de :
-* Détecter automatiquement les instances EC2 arrêtées ou inutilisées depuis plus de 7 jours.
-* Réduire les coûts opérationnels en recommandant la suppression ou l'archivage des ressources inutiles.
-* Assurer une gestion proactive du budget Cloud, une compétence clé pour les entreprises modernes.
+
+Le script finops_optimizer.py apporte une couche de gouvernance intelligente en permettant de :
+
+Surveiller l'utilisation du stockage S3 en calculant dynamiquement la taille des données capteurs collectées.
+
+Alerter en cas de dépassement de seuil (100 Mo), évitant ainsi les coûts imprévus liés à l'accumulation de données IoT massives.
+
+Promouvoir l'archivage stratégique, en recommandant le passage vers des classes de stockage moins coûteuses (comme S3 Glacier) pour les anciennes données.
+
+Assurer une gestion proactive du budget Cloud, garantissant une infrastructure performante et économiquement optimisée.
