@@ -1,37 +1,24 @@
 import boto3
-from datetime import datetime, timezone
 
-# AWS Configuration
 REGION = 'eu-west-1'
-DAYS_THRESHOLD = 7
+BUCKET = 'vaccine-iot-bucket'
 
-def check_unused_instances():
-    # Initialize EC2 client
-    ec2 = boto3.client('ec2', region_name=REGION)
-    
-    response = ec2.describe_instances()
-    found_unused = False
+s3 = boto3.client('s3', region_name=REGION)
 
-    for reservation in response['Reservations']:
-        for instance in reservation['Instances']:
-            instance_id = instance['InstanceId']
-            state = instance['State']['Name']
-            launch_time = instance['LaunchTime']
+response = s3.list_objects_v2(Bucket=BUCKET)
 
-            # Calculate the age of the instance
-            age_days = (datetime.now(timezone.utc) - launch_time).days
+total_size = 0
 
-            print(f"Checking Instance: {instance_id} | State: {state} | Age: {age_days} days")
+if 'Contents' in response:
+    for obj in response['Contents']:
+        total_size += obj['Size']
 
-            # Logic to identify unused/idle resources
-            if state == "stopped" and age_days > DAYS_THRESHOLD:
-                found_unused = True
-                print(f">>> [FINOPS ALERT] Unused instance detected: {instance_id}")
-                print(f">>> Recommendation: Terminate or Snapshot & Remove to save costs.")
+size_mb = total_size / (1024 * 1024)
 
-    if not found_unused:
-        print("No unused instances found. Infrastructure is cost-optimized.")
+print(f"S3 Usage: {size_mb:.2f} MB")
 
-if __name__ == "__main__":
-    print(f"--- FinOps Resource Optimization Scan: {datetime.now().strftime('%Y-%m-%d')} ---")
-    check_unused_instances()
+if size_mb > 100:
+    print("[FINOPS ALERT] High storage usage detected!")
+    print("Recommendation: Archive or delete old IoT data.")
+else:
+    print("Infrastructure is cost-optimized.")
